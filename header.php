@@ -1,5 +1,10 @@
 <?php
 include("connect.php");
+
+include("Person.php");
+include("Admin.php");
+include("Student.php");
+include("Teacher.php");
 session_start();
 ?>
 <!DOCTYPE html>
