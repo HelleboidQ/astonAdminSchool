@@ -7,9 +7,9 @@ if (isset($_POST["connexion"]) && !empty($_POST["nom"]) && !empty($_POST["pass"]
     $pass = sha1("oui" . $pass . "tartiflette");
 
     $resultStudent = $bdd->prepare("SELECT id FROM student WHERE lastName = ? AND pass = ?");
-    $resultAdmin->execute(array($nom, $pass));
+    $resultStudent->execute(array($nom, $pass));
     if ($resultStudent->rowCount() > 0) {
-        $resStudent->fetch();
+        $resStudent = $resultStudent->fetch();
         $person = new Student($resStudent["id"], $nom, $resStudent["firstName"]);
         $_SESSION['connected_user'] = $nom;
         $_SESSION['connected_id'] = $resStudent["id"];
@@ -17,9 +17,9 @@ if (isset($_POST["connexion"]) && !empty($_POST["nom"]) && !empty($_POST["pass"]
     }
 
     $resultTeacher = $bdd->prepare("SELECT id FROM teacher WHERE lastName = ? AND pass = ?");
-    $resultAdmin->execute(array($nom, $pass));
+    $resultTeacher->execute(array($nom, $pass));
     if ($resultTeacher->rowCount() > 0) {
-        $resTeacher->fetch();
+        $resTeacher = $resultTeacher->fetch();
         $person = new Teacher($resTeacher["id"], $nom, $resTeacher["firstName"]);
         $_SESSION['connected_user'] = $nom;
         $_SESSION['connected_id'] = $resStudent["id"];
@@ -29,7 +29,7 @@ if (isset($_POST["connexion"]) && !empty($_POST["nom"]) && !empty($_POST["pass"]
     $resultAdmin = $bdd->prepare("SELECT id FROM admin WHERE lastName = ? AND pass = ?");
     $resultAdmin->execute(array($nom, $pass));
     if ($resultAdmin->rowCount() > 0) {
-        $resAdmin->fetch();
+        $resAdmin = $resultAdmin->fetch();
         $person = new Admin($resAdmin["id"], $nom, $resAdmin["firstName"]);
         $_SESSION['connected_user'] = $nom;
         $_SESSION['connected_id'] = $resStudent["id"];
