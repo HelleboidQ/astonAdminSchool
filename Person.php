@@ -10,7 +10,7 @@ class Person
     private $_nom;
     private $_prenom;
     
-    // Constructeur paramÃ©trÃ©
+    // Constructeur paramétré
     function __construct($_ref, $_nom, $_prenom) 
     {
         $this->_ref = $_ref;
@@ -59,6 +59,4 @@ class Person
     {
         $this->_prenom = $_prenom;
     }
-
-
 }
