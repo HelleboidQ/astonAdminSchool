@@ -18,10 +18,10 @@ class Teacher extends Person {
         parent::__construct($_id, $_nom, $_prenom);
     }
 
-    public function insertNote($idStudent, $note, $coeff, $comment = "null") {
+    public function insertNote($bdd, $idStudent, $note, $coeff, $comment = null) {
 
         $resultat = $bdd->prepare("INSERT INTO `note`(`idTeacher`, `idStudent`, `note`, `coeff`, `comment`) VALUES (?, ?, ?, ?, ? )");
-        $resultat->execute($this->_id, $idStudent, $note, $coeff, $comment);
+        $resultat->execute(parent::getId(), $idStudent, $note, $coeff, $comment);
     }
 
 }
