@@ -2,20 +2,20 @@
 /**
  * Description of Person
  *
- * @author osef
+ * @author ????????
  */
 class Person 
 {
-    private $_ref;
-    private $_nom;
-    private $_prenom;
+    private $_id;
+    private $_lastname;
+    private $_firstname;
     
     // Constructeur paramétré
-    function __construct($_ref, $_nom, $_prenom) 
+    function __construct($_id, $_lastname, $_firstname) 
     {
-        $this->_ref = $_ref;
-        $this->_nom = $_nom;
-        $this->_prenom = $_prenom;
+        $this->_id = $_id;
+        $this->_lastname = $_lastname;
+        $this->_firstname = $_firstname;
     }
     
     /*          /*
@@ -24,19 +24,19 @@ class Person
      *          /*  
      *          */
     
-    function getRef() 
+    function getId() 
     {
-        return $this->_ref;
+        return $this->_id;
     }
 
-    function getNom() 
+    function getLastName() 
     {
-        return $this->_nom;
+        return $this->_lastname;
     }
 
-    function getPrenom() 
+    function getFirstName() 
     {
-        return $this->_prenom;
+        return $this->_firstname;
     }
     
     /*          /*
@@ -45,18 +45,18 @@ class Person
      *          /*  
      *          */
     
-    function setRef($_ref) 
+    function setId($_id) 
     {
-        $this->_ref = $_ref;
+        $this->_id = $_id;
     }
 
-    function setNom($_nom) 
+    function setLastName($_lastname) 
     {
-        $this->_nom = $_nom;
+        $this->_lastname = $_lastname;
     }
 
-    function setPrenom($_prenom) 
+    function setFistName($_firstname) 
     {
-        $this->_prenom = $_prenom;
+        $this->_firstname = $_firstname;
     }
 }

@@ -1,16 +1,24 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *
+ * @author ????????
+ * 
  */
 
-/**
- * Description of Student
- *
- * @author Quentin
- */
-class Student {
-    //put your code here
+require ('./ClassRoom.php');
+
+class Student extends Person
+{   
+    public function __construct($_ref, $_nom, $_prenom) 
+    {
+        parent::__construct($_ref, $_nom, $_prenom);
+    }
+    
+    function getClass()
+    {
+        $classRoom = new ClassRoom();
+        
+        return $class;
+    }
 }
