@@ -12,7 +12,7 @@ include("connect.php");
  *
  * @author Quentin
  */
-class Admin {
+class Admin extends Person {
 
     function __construct($_id, $_nom, $_prenom) {
         parent::__construct($_id, $_nom, $_prenom);
