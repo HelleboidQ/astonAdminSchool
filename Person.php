@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Description of Person
  *
  * @author ????????
  */
+
 class Person 
 {
     private $_id;
@@ -17,11 +19,11 @@ class Person
         $this->_lastname = $_lastname;
         $this->_firstname = $_firstname;
     }
-    
+
     /*          /*
      *          /*
      * GETTERS  /*
-     *          /*  
+     *          /*
      *          */
     
     function getId() 
@@ -42,7 +44,7 @@ class Person
     /*          /*
      *          /*
      * SETTERS  /*
-     *          /*  
+     *          /*
      *          */
     
     function setId($_id) 
