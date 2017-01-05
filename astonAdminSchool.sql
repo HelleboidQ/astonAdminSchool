@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost
--- Généré le :  Jeu 05 Janvier 2017 à 14:25
+-- Généré le :  Jeu 05 Janvier 2017 à 14:34
 -- Version du serveur :  5.7.16
 -- Version de PHP :  5.6.27
 
@@ -59,7 +59,7 @@ CREATE TABLE `note` (
   `coeff` int(11) NOT NULL,
   `comment` varchar(255) DEFAULT NULL,
   `isValidate` int(11) NOT NULL,
-  `date` date NOT NULL
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
