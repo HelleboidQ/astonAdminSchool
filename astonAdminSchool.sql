@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost
--- Généré le :  Jeu 05 Janvier 2017 à 11:49
+-- Généré le :  Jeu 05 Janvier 2017 à 14:25
 -- Version du serveur :  5.7.16
 -- Version de PHP :  5.6.27
 
@@ -48,18 +48,6 @@ CREATE TABLE `classroom` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `classroom_assoc`
---
-
-CREATE TABLE `classroom_assoc` (
-  `id` int(11) NOT NULL,
-  `idClassRoom` int(11) NOT NULL,
-  `idStudent` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `note`
 --
 
@@ -69,7 +57,7 @@ CREATE TABLE `note` (
   `idStudent` int(11) NOT NULL,
   `note` int(11) NOT NULL,
   `coeff` int(11) NOT NULL,
-  `comment` varchar(255) NOT NULL,
+  `comment` varchar(255) DEFAULT NULL,
   `isValidate` int(11) NOT NULL,
   `date` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -119,12 +107,6 @@ ALTER TABLE `classroom`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `classroom_assoc`
---
-ALTER TABLE `classroom_assoc`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Index pour la table `student`
 --
 ALTER TABLE `student`
@@ -149,11 +131,6 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT pour la table `classroom`
 --
 ALTER TABLE `classroom`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `classroom_assoc`
---
-ALTER TABLE `classroom_assoc`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `student`
