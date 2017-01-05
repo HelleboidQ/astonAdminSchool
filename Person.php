@@ -1,62 +1,57 @@
 <?php
+
 /**
  * Description of Person
  *
  * @author osef
  */
-class Person 
-{
-    private $_ref;
+class Person {
+
+    private $_id;
     private $_nom;
     private $_prenom;
-    
+
     // Constructeur paramétré
-    function __construct($_ref, $_nom, $_prenom) 
-    {
-        $this->_ref = $_ref;
+    function __construct($_id, $_nom, $_prenom) {
+        $this->$_id = $_id;
         $this->_nom = $_nom;
         $this->_prenom = $_prenom;
     }
-    
+
     /*          /*
      *          /*
      * GETTERS  /*
-     *          /*  
+     *          /*
      *          */
-    
-    function getRef() 
-    {
-        return $this->_ref;
+
+    function getId() {
+        return $this->$_id;
     }
 
-    function getNom() 
-    {
+    function getNom() {
         return $this->_nom;
     }
 
-    function getPrenom() 
-    {
+    function getPrenom() {
         return $this->_prenom;
     }
-    
+
     /*          /*
      *          /*
      * SETTERS  /*
-     *          /*  
+     *          /*
      *          */
-    
-    function setRef($_ref) 
-    {
-        $this->_ref = $_ref;
+
+    function setId($_id) {
+        $this->$_id = $_id;
     }
 
-    function setNom($_nom) 
-    {
+    function setNom($_nom) {
         $this->_nom = $_nom;
     }
 
-    function setPrenom($_prenom) 
-    {
+    function setPrenom($_prenom) {
         $this->_prenom = $_prenom;
     }
+
 }
