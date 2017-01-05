@@ -7,7 +7,7 @@ if (isset($_POST["connexion"]) && !empty($_POST["nom"]) && !empty($_POST["pass"]
     $pass = sha1("oui" . $pass . "tartiflette");
 
     $resultStudent = $bdd->prepare("SELECT id FROM student WHERE lastName = ? AND pass = ?");
-    $resultStudent->execute($nom, $pass);
+    $resultAdmin->execute(array($nom, $pass));
     if ($resultStudent->rowCount() > 0) {
         $resStudent->fetch();
         $person = new Student($resStudent["id"], $nom, $resStudent["firstName"]);
@@ -17,7 +17,7 @@ if (isset($_POST["connexion"]) && !empty($_POST["nom"]) && !empty($_POST["pass"]
     }
 
     $resultTeacher = $bdd->prepare("SELECT id FROM teacher WHERE lastName = ? AND pass = ?");
-    $resultTeacher->execute($nom, $pass);
+    $resultAdmin->execute(array($nom, $pass));
     if ($resultTeacher->rowCount() > 0) {
         $resTeacher->fetch();
         $person = new Teacher($resTeacher["id"], $nom, $resTeacher["firstName"]);
@@ -27,7 +27,7 @@ if (isset($_POST["connexion"]) && !empty($_POST["nom"]) && !empty($_POST["pass"]
     }
 
     $resultAdmin = $bdd->prepare("SELECT id FROM admin WHERE lastName = ? AND pass = ?");
-    $resultAdmin->execute($nom, $pass);
+    $resultAdmin->execute(array($nom, $pass));
     if ($resultAdmin->rowCount() > 0) {
         $resAdmin->fetch();
         $person = new Admin($resAdmin["id"], $nom, $resAdmin["firstName"]);
