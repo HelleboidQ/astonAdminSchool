@@ -18,13 +18,6 @@ class Teacher extends Person {
         parent::__construct($_id, $_nom, $_prenom);
     }
 
-    public function insertTeacher($firstName, $lastName, $pass) {
-        $cryptedPass = sha1("oui" . $pass . "tartiflette");
-
-        $resultat = $bdd->prepare("INSERT INTO `teacher`(`firstName`, `lastName`, `pass`) VALUES (?, ?, ?)");
-        $resultat->execute($firstName, $lastName, $cryptedPass);
-    }
-
     public function createNote($idStudent, $note, $coeff, $comment = "null") {
 
         $resultat = $bdd->prepare("INSERT INTO `note`(`idTeacher`, `idStudent`, `note`, `coeff`, `comment`) VALUES (?, ?, ?, ?, ? )");
