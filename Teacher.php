@@ -21,7 +21,7 @@ class Teacher extends Person {
     public function insertNote($bdd, $idStudent, $note, $coeff, $comment = null) {
 
         $resultat = $bdd->prepare("INSERT INTO `note`(`idTeacher`, `idStudent`, `note`, `coeff`, `comment`) VALUES (?, ?, ?, ?, ? )");
-        $resultat->execute(parent::getId(), $idStudent, $note, $coeff, $comment);
+        $resultat->execute(array(parent::getId(), $idStudent, $note, $coeff, $comment));
     }
 
 }
