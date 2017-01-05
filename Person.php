@@ -24,17 +24,17 @@ class Person
      *          /*  
      *          */
     
-    function get_ref() 
+    function getRef() 
     {
         return $this->_ref;
     }
 
-    function get_nom() 
+    function getNom() 
     {
         return $this->_nom;
     }
 
-    function get_prenom() 
+    function getPrenom() 
     {
         return $this->_prenom;
     }
@@ -45,17 +45,17 @@ class Person
      *          /*  
      *          */
     
-    function set_ref($_ref) 
+    function setRef($_ref) 
     {
         $this->_ref = $_ref;
     }
 
-    function set_nom($_nom) 
+    function setNom($_nom) 
     {
         $this->_nom = $_nom;
     }
 
-    function set_prenom($_prenom) 
+    function setPrenom($_prenom) 
     {
         $this->_prenom = $_prenom;
     }
