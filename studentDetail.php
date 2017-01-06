@@ -1,6 +1,5 @@
 
 <?php
-
 include("header.php");
 
 if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id'])) {
@@ -13,10 +12,12 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id'])) {
     } else {
         $note = $person->getAllStudentNotes($bdd);
     }
-    print_r($note);
-    ?>
 
-    <?php
+    foreach ($note as $value) {
+        ?>
+        note : <?= $value["note"] ?> - coeff :  <?= $value["coeff"] ?>   <?= $value["comment"] != "" ? "commentaire" . $value["comment"] : "" ?> <br />
+        <?php
+    }
 
     // include("footer.php");
 } else {
