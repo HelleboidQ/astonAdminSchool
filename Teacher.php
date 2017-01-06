@@ -24,4 +24,11 @@ class Teacher extends Person {
         $resultat->execute(array(parent::getId(), $idStudent, $note, $coeff, $comment)) or die(print_r($bdd->errorInfo()));
     }
 
+    public function getAllClass($bdd) {
+
+        $resultat = $bdd->prepare("SELECT * FROM classRoom ");
+        $resultat->execute();
+        return $resultat->fetchAll();
+    }
+
 }

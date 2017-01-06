@@ -13,7 +13,9 @@ if (isset($_POST["connexion"]) && !empty($_POST["nom"]) && !empty($_POST["pass"]
         $person = new Student($resStudent["id"], $nom, $resStudent["firstName"]);
         $_SESSION['connected_user'] = $nom;
         $_SESSION['connected_id'] = $resStudent["id"];
-        header("Location: affichage.php");
+        $_SESSION['connected_type'] = "student";
+        $_SESSION['connected_objet'] = serialize($person);
+        header("Location: studentPage.php");
     }
 
     $resultTeacher = $bdd->prepare("SELECT id FROM teacher WHERE lastName = ? AND pass = ?");
@@ -23,7 +25,9 @@ if (isset($_POST["connexion"]) && !empty($_POST["nom"]) && !empty($_POST["pass"]
         $person = new Teacher($resTeacher["id"], $nom, $resTeacher["firstName"]);
         $_SESSION['connected_user'] = $nom;
         $_SESSION['connected_id'] = $resStudent["id"];
-        header("Location: affichage.php");
+        $_SESSION['connected_type'] = "teacher";
+        $_SESSION['connected_objet'] = serialize($person);
+        header("Location: affichageClass.php");
     }
 
     $resultAdmin = $bdd->prepare("SELECT id FROM admin WHERE lastName = ? AND pass = ?");
@@ -32,9 +36,16 @@ if (isset($_POST["connexion"]) && !empty($_POST["nom"]) && !empty($_POST["pass"]
         $resAdmin = $resultAdmin->fetch();
         $person = new Admin($resAdmin["id"], $nom, $resAdmin["firstName"]);
         $_SESSION['connected_user'] = $nom;
-        $_SESSION['connected_id'] = $resStudent["id"];
-        header("Location: affichage.php");
+        $_SESSION['connected_id'] = $resAdmin["id"];
+        $_SESSION['connected_type'] = "admin";
+        $_SESSION['connected_objet'] = serialize($person);
+        header("Location: adminPage.php");
     }
+} else {
+    unset($_SESSION['connected_user']);
+    unset($_SESSION['connected_id']);
+    unset($_SESSION['connected_type']);
+    unset($_SESSION['connected_objet']);
 }
 ?>
 <div class="center">

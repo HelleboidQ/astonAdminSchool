@@ -1,6 +1,5 @@
 <?php
 
-include("connect.php");
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -30,6 +29,13 @@ class Admin extends Person {
 
         $resultat = $bdd->prepare("INSERT INTO `student`(`firstName`, `lastName`, `pass`) VALUES (?, ?, ?)");
         $resultat->execute(array($firstName, $lastName, $cryptedPass));
+    }
+
+    public function getAllClass($bdd) {
+
+        $resultat = $bdd->prepare("SELECT * FROM classRoom ");
+        $resultat->execute();
+        return $resultat->fetchAll();
     }
 
 }

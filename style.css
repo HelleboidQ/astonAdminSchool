@@ -1,6 +1,11 @@
 .center {
    position:absolute;
    left: 45%;
+}
 
-
+.containerAdmin{
+    display:flex; 
+}
+.containerAdmin > *{
+  padding:10px;
 }
