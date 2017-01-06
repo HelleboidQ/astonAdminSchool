@@ -83,21 +83,21 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
                     <td>M.LEGRAND</td>
                     <td>Paul Paul</td>
                     <td>15</td>
-                    <td>NUL A CHIER</td>
+                    <td>nul</td>
                     <td> <input id="checkbox_valid" type="checkbox" name="validnote" value=""></td>
                 </tr>
                 <tr>
                     <td>Terence</td>
                     <td>NAME</td>
                     <td>10</td>
-                    <td>tamere</td>
+                    <td>test</td>
                     <td> <input id="checkbox_valid" type="checkbox" name="validnote" value=""></td>
                 </tr>
                 <tr>
                     <td>Quentin</td>
                     <td>NAME</td>
                     <td>10</td>
-                    <td>tamere</td>
+                    <td>test</td>
                     <td> <input id="checkbox_valid" type="checkbox" name="validnote" value=""></td>
                 </tr>
             </table>
