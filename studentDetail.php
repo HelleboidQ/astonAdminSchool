@@ -9,8 +9,8 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id'])) {
 
     if ($type == "Teacher") {
         if (isset($_POST["Ajouter"]) && isset($_POST["note"]) && !empty($_POST["Ajouter"])) {
-            $coeff = !empty($_POST["coeff"]) ? $_POST["coeff"] : "";
-            $comment = !empty($_POST["comment"]) ? $_POST["comment"] : "";
+            $coeff = !empty($_POST["coeff"]) ? intval($_POST["coeff"]) : "";
+            $comment = !empty($_POST["comment"]) ? htmlentities($_POST["comment"]) : "";
             $person->insertNote($bdd, intval($_GET["id"]), intval($_POST["note"]), $coeff, $comment);
             header("Location: " . $_SERVER["REQUEST_URI"]);
         }
