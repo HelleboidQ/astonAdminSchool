@@ -29,4 +29,14 @@ class Student extends Person {
         return $req->fetchAll();
     }
 
+    function getMoyenneStudent($bdd) {
+
+        $resultat = $bdd->prepare("SELECT
+                                    AVG(note) as moyenne
+                                FROM  note
+                                WHERE idStudent = ? ");
+        $resultat->execute(array(parent::getId()));
+        return $resultat->fetch();
+    }
+
 }

@@ -38,9 +38,8 @@ class Admin extends Person {
             $resultat->execute(array($firstName, $lastName, $cryptedPass, $classRoom, 1)); 
         }
     }
-    
-    public function insertClassRoom($bdd, $name, $comment) 
-    {
+
+    public function insertClassRoom($bdd, $name, $comment) {
         $resultat = $bdd->prepare("INSERT INTO `classroom`(`name`, `comment`) VALUES (?, ?);");
         $resultat->execute(array($name, $comment));
     }
@@ -52,8 +51,7 @@ class Admin extends Person {
         return $resultat->fetchAll();
     }
 
-    function getAllStudentNotes($bdd, $idStudent)
-    {
+    function getAllStudentNotes($bdd, $idStudent) {
         $req = $bdd->prepare('SELECT teacher.firstName AS teacherFName, teacher.lastName AS teacherLName, note, coeff, comment, date
                              FROM note JOIN teacher ON teacher.id = idTeacher
                              WHERE idStudent=:idStudent;');
@@ -62,6 +60,16 @@ class Admin extends Person {
                 )) or die(print_r($bdd->errorInfo()));
 
         return $req->fetchAll();
+    }
+
+    function getMoyenneStudent($bdd, $idStudent) {
+
+        $resultat = $bdd->prepare("SELECT
+                                    AVG(note) as moyenne
+                                FROM  note
+                                WHERE idStudent = ? ");
+        $resultat->execute(array($idStudent));
+        return $resultat->fetch();
     }
 
 }
