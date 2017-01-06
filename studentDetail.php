@@ -36,7 +36,7 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id'])) {
             <h2>Ajouter une note</h2>
             <form method="post" action="<?= $_SERVER["REQUEST_URI"] ?>">
                 <label>Note</label>
-                <input type="number" min="0" max="20" name="note" require>
+                <input type="number" min="0" max="20" name="note" required>
                 <br />
                 <label>Coeff</label>
                 <input type="number" min="0" max="20" name="coeff">
