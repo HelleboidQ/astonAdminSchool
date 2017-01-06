@@ -15,7 +15,7 @@ if (isset($_POST["connexion"]) && !empty($_POST["nom"]) && !empty($_POST["pass"]
         $_SESSION['connected_id'] = $resStudent["id"];
         $_SESSION['connected_type'] = "student";
         $_SESSION['connected_objet'] = serialize($person);
-        header("Location: studentPage.php");
+        header("Location: studentDetail?id=" . $resStudent["id"]);
     }
 
     $resultTeacher = $bdd->prepare("SELECT id FROM teacher WHERE lastName = ? AND pass = ?");
