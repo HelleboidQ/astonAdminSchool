@@ -6,8 +6,8 @@
  * 
  */
 
-require ('./ClassRoom.php');
-require ('./Note.php');
+require_once ('./ClassRoom.php');
+require_once ('./Note.php');
 
 class Student extends Person
 {   
@@ -16,11 +16,14 @@ class Student extends Person
         parent::__construct($_id, $_lastname, $_firstname);
     }
     
-    function getClass()
+    function getClass($bdd)
     {
-        $classRoom = new ClassRoom();
+        $req = $bdd->prepare('SELECT name, comment FROM classroom JOIN student ON student.idClassRoom = classroom.id WHERE student.id=:idStudent;');
+        $req ->execute(array(
+                        'idStudent' => parent::getId()
+                        )) or die(print_r($bdd->errorInfo()));
         
-        return $classRoom->getName();
+        return $req->fetchAll();
     }
         
     function getAllStudentNotes($bdd)

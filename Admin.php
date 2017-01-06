@@ -17,18 +17,18 @@ class Admin extends Person {
         parent::__construct($_id, $_nom, $_prenom);
     }
 
-    public function insertTeacher($firstName, $lastName, $pass) {
+    public function insertTeacher($bdd, $firstName, $lastName, $pass) {
         $cryptedPass = sha1("oui" . $pass . "tartiflette");
 
         $resultat = $bdd->prepare("INSERT INTO `teacher`(`firstName`, `lastName`, `pass`) VALUES (?, ?, ?)");
         $resultat->execute(array($firstName, $lastName, $cryptedPass));
     }
 
-    public function insertStudent($firstName, $lastName, $pass) {
+    public function insertStudent($bdd, $firstName, $lastName, $pass, $classRoom) {
         $cryptedPass = sha1("oui" . $pass . "tartiflette");
 
-        $resultat = $bdd->prepare("INSERT INTO `student`(`firstName`, `lastName`, `pass`) VALUES (?, ?, ?)");
-        $resultat->execute(array($firstName, $lastName, $cryptedPass));
+        $resultat = $bdd->prepare("INSERT INTO `student`(`firstName`, `lastName`, `pass`, `idClassRoom`) VALUES (?, ?, ?, ?)");
+        $resultat->execute(array($firstName, $lastName, $cryptedPass, $classRoom));
     }
 
     public function getAllClass($bdd) {
