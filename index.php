@@ -36,7 +36,7 @@ if (isset($_POST["connexion"]) && !empty($_POST["nom"]) && !empty($_POST["pass"]
         $resAdmin = $resultAdmin->fetch();
         $person = new Admin($resAdmin["id"], $nom, $resAdmin["firstName"]);
         $_SESSION['connected_user'] = $nom;
-        $_SESSION['connected_id'] = $resStudent["id"];
+        $_SESSION['connected_id'] = $resAdmin["id"];
         $_SESSION['connected_type'] = "admin";
         $_SESSION['connected_objet'] = serialize($person);
         header("Location: adminPage.php");
