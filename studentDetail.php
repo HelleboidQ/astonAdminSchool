@@ -15,17 +15,20 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id'])) {
             header("Location: " . $_SERVER["REQUEST_URI"]);
         }
         $note = $person->getAllStudentNotes($bdd, intval($_GET["id"]));
+        $moyenne = $person->getMoyenneStudent($bdd, intval($_GET["id"]));
     } else {
         $note = $person->getAllStudentNotes($bdd);
     }
     ?>
-    <div class="buttonleft"> 
+    <div class="buttonleft">
         <a href="index.php">Deconnexion</a>
     </div>
     <img src="images/logo.png" alt="">
     <br>
     Détail :
-
+    <br />
+    Moyenne : <?= number_format($moyenne["moyenne"], 2) ?>
+    <br /><br />
     <div id="allNote">
         <?php
         foreach ($note as $value) {
@@ -36,7 +39,7 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id'])) {
         ?>
     </div>
     <?php
-    if ($type == "Teacher" || $type == "Admin") {
+    if ($type == "Teacher") {
         ?>
         <hr>
         <div id="ajouterUneNote">
