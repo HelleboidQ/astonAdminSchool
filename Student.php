@@ -22,21 +22,14 @@ class Student extends Person
         
         return $classRoom->getName();
     }
-    
+        
     function getAllStudentNotes($bdd)
     {                                            
-        $req = $bdd->prepare('SELECT * FROM note WHERE idStudent=:idStudent;');
+        $req = $bdd->prepare('SELECT teacher.firstName AS teacherFName, teacher.lastName AS teacherLName, note, coeff, comment, date FROM note JOIN teacher ON teacher.id = idTeacher WHERE idStudent=:idStudent;');
         $req ->execute(array(
                         'idStudent' => parent::getId()
                         )) or die(print_r($bdd->errorInfo()));
         
-        $lesNotes = array();
-        while($donnees = $req->fetch())
-        {
-            array_push($lesNotes, $donnees['note']);
-        }
-        $req->closeCursor();
-        
-        return $lesNotes;
+        return $req->fetchAll();
     }
 }

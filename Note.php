@@ -54,6 +54,14 @@ class Note
         return $this->_coef;
     }
     
+    function getAllNotes($bdd)
+    {                                            
+        $req = $bdd->prepare('SELECT teacher.firstName AS teacherFName, teacher.lastName AS teacherLName, student.firstName AS studentFName, student.lastName AS studentLName, note, coeff, comment, date FROM note JOIN student ON student.id = idStudent JOIN teacher ON teacher.id = idTeacher ORDER BY studentLName;');
+        $req ->execute() or die(print_r($bdd->errorInfo()));
+        
+        return $req->fetchAll();
+    }
+    
     /*          /*
      *          /*
      * SETTERS  /*

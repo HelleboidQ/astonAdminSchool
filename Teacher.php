@@ -26,8 +26,8 @@ class Teacher extends Person {
 
     public function getAllClass($bdd) {
 
-        $resultat = $bdd->prepare("SELECT * FROM classRoom ");
-        $resultat->execute();
+        $resultat = $bdd->prepare("SELECT * FROM classRoom;");
+        $resultat->execute() or die(print_r($bdd->errorInfo()));
         return $resultat->fetchAll();
     }
 
