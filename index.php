@@ -41,6 +41,11 @@ if (isset($_POST["connexion"]) && !empty($_POST["nom"]) && !empty($_POST["pass"]
         $_SESSION['connected_objet'] = serialize($person);
         header("Location: adminPage.php");
     }
+} else {
+    unset($_SESSION['connected_user']);
+    unset($_SESSION['connected_id']);
+    unset($_SESSION['connected_type']);
+    unset($_SESSION['connected_objet']);
 }
 ?>
 <div class="center">
