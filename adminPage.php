@@ -15,9 +15,9 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
         <div>
             <form method="post" action="adminPage.php">
                 <strong>Ajouter un étudiant : </strong><br><br>
-                <FORM>
+
                     Classe :
-                    <SELECT name="classe">
+                    <select name="classe">
                         <?php
                         foreach ($classRoom as $value) {
                             ?>
@@ -25,8 +25,8 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
                             <?php
                         }
                         ?>
-                    </SELECT>
-                </FORM><br>
+                    </select>
+                <br>
                 Prénom de l'étudiant :
                 <input type="text" name="firstname"><br><br>
                 Nom de l'étudiant:
@@ -34,7 +34,7 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
                 Mot de passe de l'étudiant :
                 <input type="text" name="password"><br><br>
                 <input type="checkbox" name="" value="Délégué">Délégué<br><br>
-                <input type="submit" name="" value="Ajouter un étudiant">
+                <input type="submit" name="" value="Ajouter un étudiant" />
             </form>
         </div>
         <div>
@@ -62,7 +62,9 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
     </div>
     <?php
     include("template/footer.php");
-} else {
+}
+else
+{
     header("Location: index.php");
 }
 ?>
