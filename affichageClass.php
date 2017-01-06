@@ -10,7 +10,7 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
         <a href="index.php">Deconnexion</a>
     </div>
     <div class="center">
-        <img src="img/logo.png" alt="">
+        <img src="images/logo.png" alt="">
         <h3>Bonjour <?= $_SESSION['connected_user'] ?></h3>
         Bienvenue sur votre espace professeur,<br>
         Veuillez choisir une classe.
