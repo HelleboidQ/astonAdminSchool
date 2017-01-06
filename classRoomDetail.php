@@ -31,7 +31,7 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
                 ?>
                 <tr>
                     <td> <?= $value["id"] ?> </td>
-                    <td> <a href="studentDetail?id=<?= $value["id"] ?>" > <?= $value["lastName"] ?> </a> </td>
+                    <td> <a href="studentDetail?id=<?= intval($value["id"]) ?>" > <?= $value["lastName"] ?> </a> </td>
                     <td> <?= $value["firstName"] ?> </td>
                     <td> <?= $value["note"] ?> </td>
                     <td> <?= $value["coeff"] ?> </td>
