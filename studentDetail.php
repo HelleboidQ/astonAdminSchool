@@ -2,7 +2,7 @@
 <?php
 include("template/header.php");
 
-if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id'])) {
+if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && isset($_GET["id"]) && !empty($_GET["id"])) {
 
     $person = unserialize($_SESSION['connected_objet']);
     $type = get_class($person);

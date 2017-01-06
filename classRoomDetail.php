@@ -2,8 +2,9 @@
 <?php
 include("template/header.php");
 
-if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_SESSION['connected_type'] == "teacher") {
+if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && ($_SESSION['connected_type'] == "teacher" || $_SESSION['connected_type'] == "admin") && isset($_GET["id"]) && !empty($_GET["id"])) {
     $person = unserialize($_SESSION['connected_objet']);
+
     $classRoom = $person->getAllStudentByClass($bdd, intval($_GET["id"]));
     ?>
 
@@ -23,6 +24,7 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
                 <th> Prenom </th>
                 <th> Note </th>
                 <th> Coeff </th>
+                <th> Délégué </th>
             </tr>
         </thead>
         <tbody>
@@ -31,10 +33,11 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
                 ?>
                 <tr>
                     <td> <?= $value["id"] ?> </td>
-                    <td> <a href="studentDetail?id=<?= $value["id"] ?>" > <?= $value["lastName"] ?> </a> </td>
+                    <td> <a href="studentDetail?id=<?= intval($value["id"]) ?>" > <?= $value["lastName"] ?> </a> </td>
                     <td> <?= $value["firstName"] ?> </td>
                     <td> <?= $value["note"] ?> </td>
                     <td> <?= $value["coeff"] ?> </td>
+                    <td> <?= $value["isDelegate"] == 1 ? "Oui" : "Non" ?></td>
 
                 </tr>
                 <?php

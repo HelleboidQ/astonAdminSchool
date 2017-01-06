@@ -38,6 +38,7 @@ class Teacher extends Person {
                                     s.id,
                                     s.firstName,
                                     s.lastName,
+                                    s.isDelegate,
                                     n.note,
                                     n.coeff
                                 FROM student s
