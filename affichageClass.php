@@ -6,8 +6,11 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
     $person = unserialize($_SESSION['connected_objet']);
     $classRoom = $person->getAllClass($bdd);
     ?>
-    <div class="buttonleft">
-        <a href="index.php">Deconnexion</a>
+    <div class="buttonreturn">
+      <a href="affichageClass.php" style="text-decoration:none">Retour</a>
+    </div>
+    <div class="buttondisco">
+      <a href="index.php" style="text-decoration:none">Deconnexion</a>
     </div>
     <div class="center">
         <img src="images/logo.png" alt="">
