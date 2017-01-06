@@ -19,6 +19,13 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id'])) {
         $note = $person->getAllStudentNotes($bdd);
     }
     ?>
+    <div class="buttonleft"> 
+        <a href="index.php">Deconnexion</a>
+    </div>
+    <img src="images/logo.png" alt="">
+    <br>
+    Détail :
+
     <div id="allNote">
         <?php
         foreach ($note as $value) {
