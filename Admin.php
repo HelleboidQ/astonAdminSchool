@@ -20,15 +20,21 @@ class Admin extends Person {
     public function insertTeacher($bdd, $firstName, $lastName, $pass) {
         $cryptedPass = sha1("oui" . $pass . "tartiflette");
 
-        $resultat = $bdd->prepare("INSERT INTO `teacher`(`firstName`, `lastName`, `pass`) VALUES (?, ?, ?)");
+        $resultat = $bdd->prepare("INSERT INTO `teacher`(`firstName`, `lastName`, `pass`) VALUES (?, ?, ?);");
         $resultat->execute(array($firstName, $lastName, $cryptedPass));
     }
 
     public function insertStudent($bdd, $firstName, $lastName, $pass, $classRoom) {
         $cryptedPass = sha1("oui" . $pass . "tartiflette");
 
-        $resultat = $bdd->prepare("INSERT INTO `student`(`firstName`, `lastName`, `pass`, `idClassRoom`) VALUES (?, ?, ?, ?)");
+        $resultat = $bdd->prepare("INSERT INTO `student`(`firstName`, `lastName`, `pass`, `idClassRoom`) VALUES (?, ?, ?, ?);");
         $resultat->execute(array($firstName, $lastName, $cryptedPass, $classRoom));
+    }
+    
+    public function insertClassRoom($bdd, $name, $comment) 
+    {
+        $resultat = $bdd->prepare("INSERT INTO `classroom`(`name`, `comment`) VALUES (?, ?);");
+        $resultat->execute(array($name, $comment));
     }
 
     public function getAllClass($bdd) {
@@ -38,7 +44,8 @@ class Admin extends Person {
         return $resultat->fetchAll();
     }
 
-    function getAllStudentNotes($bdd, $idStudent) {
+    function getAllStudentNotes($bdd, $idStudent)
+    {
         $req = $bdd->prepare('SELECT teacher.firstName AS teacherFName, teacher.lastName AS teacherLName, note, coeff, comment, date
                              FROM note JOIN teacher ON teacher.id = idTeacher
                              WHERE idStudent=:idStudent;');
