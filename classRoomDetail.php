@@ -23,6 +23,7 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
                 <th> Prenom </th>
                 <th> Note </th>
                 <th> Coeff </th>
+                <th> Délégué </th>
             </tr>
         </thead>
         <tbody>
@@ -35,6 +36,7 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
                     <td> <?= $value["firstName"] ?> </td>
                     <td> <?= $value["note"] ?> </td>
                     <td> <?= $value["coeff"] ?> </td>
+                    <td> <?= $value["isDelegate"] == 1 ? "Oui" : "Non" ?></td>
 
                 </tr>
                 <?php
