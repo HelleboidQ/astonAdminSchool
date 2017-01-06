@@ -39,11 +39,12 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
                 <input type="text" name="password"><br><br>
 
                 <input type="checkbox" name="delegue" value="Délégué">Délégué<br><br>
+                <input type="hidden" name="student_" value="student">
                 <input type="submit" name="" value="Ajouter un étudiant" />
             </form>
         </div>
         <div>
-            <form method="post" action="adminPage.php">
+            <form method="post" action="controlAdminPage.php">
                 <strong>Ajouter un professeur : </strong><br><br>
                 Prï¿½nom du professeur:
                 <input type="text" name="firstname"><br><br>
@@ -51,16 +52,18 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
                 <input type="text" name="lastname"><br><br>
                 Mot de passe du professeur:
                 <input type="text" name="password"><br><br>
+                <input type="hidden" name="teacher_" value="teacher">
                 <input type="submit" name="" value="Ajouter un professeur">
             </form>
         </div>
         <div >
-            <form method="post" action="adminPage.php">
+            <form method="post" action="controlAdminPage.php">
                 <strong>Ajouter une classe : </strong><br><br>
                 Nom de la classe :
                 <input type="text" name="name"><br><br>
                 Commentaire :<br>
-                <textarea rows="4" cols="50"></textarea><br>
+                <textarea rows="4" cols="50" name="comment_"></textarea><br>
+                <input type="hidden" name="class_" value="class">
                 <input type="submit" name="" value="Ajouter une classe">
             </form>
         </div>
