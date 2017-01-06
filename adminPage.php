@@ -7,10 +7,10 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
     $classRoom = $person->getAllClass($bdd);
     ?>
     <div class="buttonreturn">
-      <a href="affichageClass.php" style="text-decoration:none">Retour</a>
+        <a href="affichageClass.php" style="text-decoration:none">Retour</a>
     </div>
     <div class="buttondisco">
-      <a href="index.php" style="text-decoration:none">Deconnexion</a>
+        <a href="index.php" style="text-decoration:none">Deconnexion</a>
     </div>
     <img src="images/logo.png" alt="">
     <br>
@@ -18,20 +18,19 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
         <div>
             <form method="post" action="controlAdminPage.php">
                 <strong>Ajouter un étudiant : </strong><br><br>
-                    Classe :
-                    <select name="classe">
-                        <?php
-                        foreach ($classRoom as $value) 
-                        {
-                            ?>
-                            <option value="<?= $value["id"] ?>"> <?= $value["name"] ?></option>
-                            <?php
-                        }
+                Classe :
+                <select name="classe">
+                    <?php
+                    foreach ($classRoom as $value) {
                         ?>
+                        <option value="<?= $value["id"] ?>"> <?= $value["name"] ?></option>
+                        <?php
+                    }
+                    ?>
 
-                    </select>
+                </select>
                 <br>
-                Prï¿½nom de l'étudiant :
+                Prénom de l'étudiant :
                 <input type="text" name="firstname"><br><br>
                 Nom de l'étudiant:
                 <input type="text" name="lastname"><br><br>
@@ -46,7 +45,7 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
         <div>
             <form method="post" action="controlAdminPage.php">
                 <strong>Ajouter un professeur : </strong><br><br>
-                Prï¿½nom du professeur:
+                Prénom du professeur:
                 <input type="text" name="firstname"><br><br>
                 Nom du professeur:
                 <input type="text" name="lastname"><br><br>
@@ -69,46 +68,44 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
         </div>
     </div>
     <div class="valid_note">
-      <h3>Validation des notes</h3>
-      <br><br>
-      <div class="tables_valid">
-        <table border="1" cellpadding="10" cellspacing="1" width="100%">
-           <tr>
-              <th>Nom du Professeur</th>
-              <th>Prénom et Nom de l'étudiant</th>
-              <th>Note</th>
-              <th>Commentaire</th>
-              <th>Validation</th>
-           </tr>
-           <tr>
-              <td>M.LEGRAND</td>
-              <td>Paul Paul</td>
-              <td>15</td>
-              <td>NUL A CHIER</td>
-              <td> <input id="checkbox_valid" type="checkbox" name="validnote" value=""></td>
-           </tr>
-           <tr>
-              <td>Terence</td>
-              <td>NAME</td>
-              <td>10</td>
-              <td>tamere</td>
-              <td> <input id="checkbox_valid" type="checkbox" name="validnote" value=""></td>
-           </tr>
-           <tr>
-              <td>Quentin</td>
-              <td>NAME</td>
-              <td>10</td>
-              <td>tamere</td>
-              <td> <input id="checkbox_valid" type="checkbox" name="validnote" value=""></td>
-           </tr>
-         </table>
-      </div>
+        <h3>Validation des notes</h3>
+        <br><br>
+        <div class="tables_valid">
+            <table border="1" cellpadding="10" cellspacing="1" width="100%">
+                <tr>
+                    <th>Nom du Professeur</th>
+                    <th>Prénom et Nom de l'étudiant</th>
+                    <th>Note</th>
+                    <th>Commentaire</th>
+                    <th>Validation</th>
+                </tr>
+                <tr>
+                    <td>M.LEGRAND</td>
+                    <td>Paul Paul</td>
+                    <td>15</td>
+                    <td>nul</td>
+                    <td> <input id="checkbox_valid" type="checkbox" name="validnote" value=""></td>
+                </tr>
+                <tr>
+                    <td>Terence</td>
+                    <td>NAME</td>
+                    <td>10</td>
+                    <td>test</td>
+                    <td> <input id="checkbox_valid" type="checkbox" name="validnote" value=""></td>
+                </tr>
+                <tr>
+                    <td>Quentin</td>
+                    <td>NAME</td>
+                    <td>10</td>
+                    <td>test</td>
+                    <td> <input id="checkbox_valid" type="checkbox" name="validnote" value=""></td>
+                </tr>
+            </table>
+        </div>
     </div>
     <?php
     include("template/footer.php");
-}
-else
-{
+} else {
     header("Location: index.php");
 }
 ?>
