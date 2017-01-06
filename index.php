@@ -13,6 +13,8 @@ if (isset($_POST["connexion"]) && !empty($_POST["nom"]) && !empty($_POST["pass"]
         $person = new Student($resStudent["id"], $nom, $resStudent["firstName"]);
         $_SESSION['connected_user'] = $nom;
         $_SESSION['connected_id'] = $resStudent["id"];
+        $_SESSION['connected_type'] = "student";
+        $_SESSION['connected_objet'] = serialize($person);
         header("Location: affichage.php");
     }
 
@@ -23,6 +25,8 @@ if (isset($_POST["connexion"]) && !empty($_POST["nom"]) && !empty($_POST["pass"]
         $person = new Teacher($resTeacher["id"], $nom, $resTeacher["firstName"]);
         $_SESSION['connected_user'] = $nom;
         $_SESSION['connected_id'] = $resStudent["id"];
+        $_SESSION['connected_type'] = "teacher";
+        $_SESSION['connected_objet'] = serialize($person);
         header("Location: affichage.php");
     }
 
@@ -33,7 +37,9 @@ if (isset($_POST["connexion"]) && !empty($_POST["nom"]) && !empty($_POST["pass"]
         $person = new Admin($resAdmin["id"], $nom, $resAdmin["firstName"]);
         $_SESSION['connected_user'] = $nom;
         $_SESSION['connected_id'] = $resStudent["id"];
-        header("Location: affichage.php");
+        $_SESSION['connected_type'] = "admin";
+        $_SESSION['connected_objet'] = serialize($person);
+        header("Location: adminPage.php");
     }
 }
 ?>
