@@ -17,8 +17,10 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
         <ul>
             <?php
             foreach ($classRoom as $value) {
+
+                $moyenne = $person->getAllMoyenneClass($bdd, $value["id"]);
                 ?>
-                <li><a href="classRoomDetail?id=<?= $value["id"] ?>"> <?= $value["name"] ?></a> - <?= $value["comment"] ?></li>
+                <li><a href="classRoomDetail?id=<?= $value["id"] ?>"> <?= $value["name"] ?></a> - <?= $value["comment"] ?> - moyenne : <?= number_format($moyenne["moyenne"], 2) ?></li>
                 <?php
             }
             ?>
