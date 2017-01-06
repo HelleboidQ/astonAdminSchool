@@ -27,15 +27,12 @@ class Admin extends Person {
     public function insertStudent($bdd, $firstName, $lastName, $pass, $classRoom, $isDelegate = 0) {
         $cryptedPass = sha1("oui" . $pass . "tartiflette");
 
-        if($isDelegate === 0)
-        {
+        if ($isDelegate === 0) {
             $resultat = $bdd->prepare("INSERT INTO `student`(`firstName`, `lastName`, `pass`, `idClassRoom`) VALUES (?, ?, ?, ?);");
             $resultat->execute(array($firstName, $lastName, $cryptedPass, $classRoom));
-        }
-        else
-        {
+        } else {
             $resultat = $bdd->prepare("INSERT INTO `student`(`firstName`, `lastName`, `pass`, `idClassRoom`, `isDelegate`) VALUES (?, ?, ?, ?, ?);");
-            $resultat->execute(array($firstName, $lastName, $cryptedPass, $classRoom, 1)); 
+            $resultat->execute(array($firstName, $lastName, $cryptedPass, $classRoom, 1));
         }
     }
 
@@ -70,6 +67,22 @@ class Admin extends Person {
                                 WHERE idStudent = ? ");
         $resultat->execute(array($idStudent));
         return $resultat->fetch();
+    }
+
+    public function getAllStudentByClass($bdd, $idClassRoom) {
+
+        $resultat = $bdd->prepare("SELECT
+                                    s.id,
+                                    s.firstName,
+                                    s.lastName,
+                                    s.isDelegate,
+                                    n.note,
+                                    n.coeff
+                                FROM student s
+                                    JOIN note n ON n.idStudent=s.id
+                                WHERE s.idClassRoom = ?");
+        $resultat->execute(array($idClassRoom));
+        return $resultat->fetchAll();
     }
 
 }
