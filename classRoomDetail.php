@@ -2,8 +2,9 @@
 <?php
 include("template/header.php");
 
-if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_SESSION['connected_type'] == "teacher" && isset($_GET["id"]) && !empty($_GET["id"])) {
+if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && ($_SESSION['connected_type'] == "teacher" || $_SESSION['connected_type'] == "admin") && isset($_GET["id"]) && !empty($_GET["id"])) {
     $person = unserialize($_SESSION['connected_objet']);
+
     $classRoom = $person->getAllStudentByClass($bdd, intval($_GET["id"]));
     ?>
 
