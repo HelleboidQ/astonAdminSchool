@@ -1,0 +1,12 @@
+Fichier .sql dans le dossier config
+Dans le fichier config/config.php, il faut modifier la BDD
+
+Le compte admin 
+	pseudo : admin
+	mot de passe : admin
+Le compte prof 
+	pseudo :  pierre 
+	mot de passe : pierre
+Le compte etudiant :
+	pseudo : michel
+	mot de passe : michel
