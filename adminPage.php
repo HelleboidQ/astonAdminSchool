@@ -38,7 +38,7 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
                 Mot de passe de l'étudiant :
                 <input type="text" name="password"><br><br>
 
-                <input type="checkbox" name="" value="Délégué">Délégué<br><br>
+                <input type="checkbox" name="delegue" value="Délégué">Délégué<br><br>
                 <input type="submit" name="" value="Ajouter un étudiant" />
             </form>
         </div>
