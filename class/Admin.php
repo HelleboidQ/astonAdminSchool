@@ -24,11 +24,19 @@ class Admin extends Person {
         $resultat->execute(array($firstName, $lastName, $cryptedPass));
     }
 
-    public function insertStudent($bdd, $firstName, $lastName, $pass, $classRoom) {
+    public function insertStudent($bdd, $firstName, $lastName, $pass, $classRoom, $isDelegate = 0) {
         $cryptedPass = sha1("oui" . $pass . "tartiflette");
 
-        $resultat = $bdd->prepare("INSERT INTO `student`(`firstName`, `lastName`, `pass`, `idClassRoom`) VALUES (?, ?, ?, ?);");
-        $resultat->execute(array($firstName, $lastName, $cryptedPass, $classRoom));
+        if($isDelegate === 0)
+        {
+            $resultat = $bdd->prepare("INSERT INTO `student`(`firstName`, `lastName`, `pass`, `idClassRoom`) VALUES (?, ?, ?, ?);");
+            $resultat->execute(array($firstName, $lastName, $cryptedPass, $classRoom));
+        }
+        else
+        {
+            $resultat = $bdd->prepare("INSERT INTO `student`(`firstName`, `lastName`, `pass`, `idClassRoom`, `isDelegate`) VALUES (?, ?, ?, ?, ?);");
+            $resultat->execute(array($firstName, $lastName, $cryptedPass, $classRoom, 1)); 
+        }
     }
 
     public function insertClassRoom($bdd, $name, $comment) {
