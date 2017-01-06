@@ -31,4 +31,11 @@ class Admin extends Person {
         $resultat->execute(array($firstName, $lastName, $cryptedPass));
     }
 
+    public function getAllClass($bdd) {
+
+        $resultat = $bdd->prepare("SELECT * FROM classRoom ");
+        $resultat->execute();
+        return $resultat->fetchAll();
+    }
+
 }
