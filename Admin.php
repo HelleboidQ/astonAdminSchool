@@ -38,4 +38,15 @@ class Admin extends Person {
         return $resultat->fetchAll();
     }
 
+    function getAllStudentNotes($bdd, $idStudent) {
+        $req = $bdd->prepare('SELECT teacher.firstName AS teacherFName, teacher.lastName AS teacherLName, note, coeff, comment, date
+                             FROM note JOIN teacher ON teacher.id = idTeacher
+                             WHERE idStudent=:idStudent;');
+        $req->execute(array(
+                    'idStudent' => $idStudent
+                )) or die(print_r($bdd->errorInfo()));
+
+        return $req->fetchAll();
+    }
+
 }
