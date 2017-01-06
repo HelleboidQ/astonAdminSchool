@@ -18,7 +18,7 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
             <?php
             foreach ($classRoom as $value) {
                 ?>
-                <li><a href="classe-<?= $value["id"] ?>.html"> <?= $value["name"] ?></a> - <?= $value["comment"] ?></li>
+                <li><a href="classRoomDetail?id=<?= $value["id"] ?>"> <?= $value["name"] ?></a> - <?= $value["comment"] ?></li>
                 <?php
             }
             ?>
