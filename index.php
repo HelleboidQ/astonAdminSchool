@@ -1,5 +1,5 @@
 <?php
-include("header.php");
+include("template/header.php");
 
 if (isset($_POST["connexion"]) && !empty($_POST["nom"]) && !empty($_POST["pass"])) {
     $nom = htmlentities($_POST["nom"]);

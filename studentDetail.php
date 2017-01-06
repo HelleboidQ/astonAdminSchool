@@ -1,6 +1,6 @@
 
 <?php
-include("header.php");
+include("template/header.php");
 
 if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id'])) {
 
@@ -49,7 +49,7 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id'])) {
         </div>
         <?php
     }
-    // include("footer.php");
+    // include("template/footer.php");
 } else {
     header("Location: index.php");
 }

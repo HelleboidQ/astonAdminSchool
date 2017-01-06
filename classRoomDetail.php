@@ -1,10 +1,11 @@
 
 <?php
-include("header.php");
+include("template/header.php");
 
 if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_SESSION['connected_type'] == "teacher") {
     $person = unserialize($_SESSION['connected_objet']);
     $classRoom = $person->getAllStudentByClass($bdd, intval($_GET["id"]));
+    print_r();
     ?>
 
     <div class="buttonleft">
@@ -43,7 +44,7 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
         </tbody>
     </table>
     <?php
-    // include("footer.php");
+    // include("template/footer.php");
 } else {
     header("Location: index.php");
 }
