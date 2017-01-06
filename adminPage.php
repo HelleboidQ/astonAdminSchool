@@ -13,13 +13,14 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
     <br>
     <div class="containerAdmin">
         <div>
-            <form method="post" action="adminPage.php">
+            <form method="post" action="controlAdminPage.php">
                 <strong>Ajouter un étudiant : </strong><br><br>
 
                     Classe :
                     <select name="classe">
                         <?php
-                        foreach ($classRoom as $value) {
+                        foreach ($classRoom as $value) 
+                        {
                             ?>
                             <option value="<?= $value["id"] ?>"> <?= $value["name"] ?></option>
                             <?php
