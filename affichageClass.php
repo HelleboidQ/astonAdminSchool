@@ -7,8 +7,7 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
     $classRoom = $person->getAllClass($bdd);
     ?>
     <div class="buttonleft">
-        <button><a href="Login.html">Retour</a></button>
-        <button><a href="login.html">Deconnexion</a></button>
+        <a href="index.php">Deconnexion</a>
     </div>
     <div class="center">
         <img src="img/logo.png" alt="">
