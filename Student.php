@@ -23,10 +23,20 @@ class Student extends Person
         return $classRoom->getName();
     }
     
-    function getNotes()
-    {
-        $notes = new Note();
+    function getAllStudentNotes($bdd)
+    {                                            
+        $req = $bdd->prepare('SELECT * FROM note WHERE idStudent=:idStudent;');
+        $req ->execute(array(
+                        'idStudent' => parent::getId()
+                        )) or die(print_r($bdd->errorInfo()));
         
-        return $notes->getAllStudentNotes();
+        $lesNotes = array();
+        while($donnees = $req->fetch())
+        {
+            array_push($lesNotes, $donnees['note']);
+        }
+        $req->closeCursor();
+        
+        return $lesNotes;
     }
 }

@@ -1,6 +1,5 @@
 <?php
 
-include("connect.php");
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -18,10 +17,11 @@ class Teacher extends Person {
         parent::__construct($_id, $_nom, $_prenom);
     }
 
-    public function insertNote($bdd, $idStudent, $note, $coeff, $comment = null) {
+    public function insertNote($bdd, $idStudent, $note, $coeff = null, $comment = null) {
 
-        $resultat = $bdd->prepare("INSERT INTO `note`(`idTeacher`, `idStudent`, `note`, `coeff`, `comment`) VALUES (?, ?, ?, ?, ? )");
-        $resultat->execute(array(parent::getId(), $idStudent, $note, $coeff, $comment));
+        if($coeff === null || $coeff == '') $coeff = 1;
+        $resultat = $bdd->prepare("INSERT INTO `note`(`idTeacher`, `idStudent`, `note`, `coeff`, `comment`) VALUES (?, ?, ?, ?, ? );");
+        $resultat->execute(array(parent::getId(), $idStudent, $note, $coeff, $comment)) or die(print_r($bdd->errorInfo()));
     }
 
 }

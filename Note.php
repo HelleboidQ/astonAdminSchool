@@ -54,17 +54,6 @@ class Note
         return $this->_coef;
     }
     
-    function getAllStudentNotes($idStudent)
-    {                                            
-        $req = $bdd->prepare('SELECT * FROM note WHERE idStudent=:idStudent');
-        $req ->execute(array(
-                        'idStudent' => $idStudent
-                        ));
-        $resultat = $req->fetch();
-        
-        return $resultat;
-    }
-    
     /*          /*
      *          /*
      * SETTERS  /*
