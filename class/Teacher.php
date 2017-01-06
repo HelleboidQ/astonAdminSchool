@@ -19,7 +19,8 @@ class Teacher extends Person {
 
     public function insertNote($bdd, $idStudent, $note, $coeff = null, $comment = null) {
 
-        if ($coeff === null || $coeff == '') $coeff = 1;
+        if ($coeff === null || $coeff == '')
+            $coeff = 1;
         $resultat = $bdd->prepare("INSERT INTO `note`(`idTeacher`, `idStudent`, `note`, `coeff`, `comment`) VALUES (?, ?, ?, ?, ? );");
         $resultat->execute(array(parent::getId(), $idStudent, $note, $coeff, $comment)) or die(print_r($bdd->errorInfo()));
     }
@@ -55,6 +56,17 @@ class Teacher extends Person {
                 )) or die(print_r($bdd->errorInfo()));
 
         return $req->fetchAll();
+    }
+
+    function getAllMoyenneClass($bdd, $idClassRoom) {
+
+        $resultat = $bdd->prepare("SELECT
+                                    AVG(n.note) as moyenne
+                                FROM  note n
+                                    JOIN student s ON s.id = n.idStudent
+                                WHERE s.idClassRoom = ? AND n.idTeacher = ?");
+        $resultat->execute(array($idClassRoom, parent::getId()));
+        return $resultat->fetch();
     }
 
 }
