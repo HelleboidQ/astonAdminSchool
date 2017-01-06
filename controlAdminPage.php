@@ -74,9 +74,9 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
     }
     elseif(isset($_POST['class_']) && $_POST['class_'] != '')
     {
-        if(isset($_POST['name']) && isset($_POST['comment_']))
+        if(isset($_POST['name']))
         {
-            if($_POST['name'] != '' && $_POST['comment_'] != '')
+            if($_POST['name'] != '')
             {
                 include_once('./config/connect.php');
                 require('class/ClassRoom.php');
@@ -84,12 +84,19 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
                 require('class/Admin.php');
 
                 $cName = htmlspecialchars($_POST['name']);
-                $cComment = htmlspecialchars($_POST['comment_']);
+                
+                if(isset($_POST['comment_']) && $_POST['comment_'] != '') $cComment = htmlspecialchars($_POST['comment_']);
 
                 $anAdmin = unserialize($_SESSION['connected_objet']);
                 
-                $anAdmin->insertClassRoom($bdd, $cName, $cComment);
-                
+                if(isset($cComment))
+                {
+                    $anAdmin->insertClassRoom($bdd, $cName, $cComment);
+                }
+                else
+                {
+                    $anAdmin->insertClassRoom($bdd, $cName);
+                }
                 header("Location: adminPage.php");          
             }
             else

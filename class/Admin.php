@@ -36,7 +36,7 @@ class Admin extends Person {
         }
     }
 
-    public function insertClassRoom($bdd, $name, $comment) {
+    public function insertClassRoom($bdd, $name, $comment = null) {
         $resultat = $bdd->prepare("INSERT INTO `classroom`(`name`, `comment`) VALUES (?, ?);");
         $resultat->execute(array($name, $comment));
     }
