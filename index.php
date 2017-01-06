@@ -15,7 +15,7 @@ if (isset($_POST["connexion"]) && !empty($_POST["nom"]) && !empty($_POST["pass"]
         $_SESSION['connected_id'] = $resStudent["id"];
         $_SESSION['connected_type'] = "student";
         $_SESSION['connected_objet'] = serialize($person);
-        header("Location: affichage.php");
+        header("Location: studentPage.php");
     }
 
     $resultTeacher = $bdd->prepare("SELECT id FROM teacher WHERE lastName = ? AND pass = ?");
@@ -27,7 +27,7 @@ if (isset($_POST["connexion"]) && !empty($_POST["nom"]) && !empty($_POST["pass"]
         $_SESSION['connected_id'] = $resStudent["id"];
         $_SESSION['connected_type'] = "teacher";
         $_SESSION['connected_objet'] = serialize($person);
-        header("Location: affichage.php");
+        header("Location: affichageClass.php");
     }
 
     $resultAdmin = $bdd->prepare("SELECT id FROM admin WHERE lastName = ? AND pass = ?");
