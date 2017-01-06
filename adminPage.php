@@ -9,7 +9,8 @@ if (isset($_SESSION['connected_id']) && !empty($_SESSION['connected_id']) && $_S
     <div class="buttonleft">
         <a href="index.php">Deconnexion</a>
     </div>
-    <img src="img/logo.png" alt=""><br>
+    <img src="images/logo.png" alt="">
+    <br>
     <div class="containerAdmin">
         <div>
             <form method="post" action="adminPage.php">

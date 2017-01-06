@@ -49,7 +49,7 @@ if (isset($_POST["connexion"]) && !empty($_POST["nom"]) && !empty($_POST["pass"]
 }
 ?>
 <div class="center">
-    <img src="img/logo.png" alt="">
+    <img src="images/logo.png" alt="">
     <form method="post" action="index.php">
         <p>
         <h3>Bienvenue sur le site AdminSchool<br>
